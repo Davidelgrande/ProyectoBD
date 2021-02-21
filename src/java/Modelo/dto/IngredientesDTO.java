@@ -112,8 +112,7 @@ public class IngredientesDTO implements Serializable {
         if(this.unidad_medida != other.codigo_ingredientes){
             return false ;
   
-        }
-        
+        }    
       return true ;  
     }
     
