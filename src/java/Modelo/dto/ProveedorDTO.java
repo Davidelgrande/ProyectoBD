@@ -6,30 +6,26 @@ import java.util.Objects;
 
 public class ProveedorDTO {
     
-    private float id_proveedor ;
+    private int id_proveedor ;
     private String nombre ; 
-    private float id_encargado ;
+    private int id_encargado ;
 
-    public ProveedorDTO(float id_proveedor, String nombre, float id_encargado) {
+    public ProveedorDTO(int id_proveedor, String nombre, int id_encargado) {
         this.id_proveedor = id_proveedor;
         this.nombre = nombre;
         this.id_encargado = id_encargado;
     }
 
-    public ProveedorDTO(String nombre, float id_encargado) {
+    public ProveedorDTO(String nombre, int id_encargado) {
         this.nombre = nombre;
         this.id_encargado = id_encargado;
     }
-    
-    public ProveedorDTO (){
-        
-    }
 
-    public float getId_proveedor() {
+    public int getId_proveedor() {
         return id_proveedor;
     }
 
-    public void setId_proveedor(float id_proveedor) {
+    public void setId_proveedor(int id_proveedor) {
         this.id_proveedor = id_proveedor;
     }
 
@@ -41,13 +37,15 @@ public class ProveedorDTO {
         this.nombre = nombre;
     }
 
-    public float getId_encargado() {
+    public int getId_encargado() {
         return id_encargado;
     }
 
-    public void setId_encargado(float id_encargado) {
+    public void setId_encargado(int id_encargado) {
         this.id_encargado = id_encargado;
     }
+
+   
     
     @Override
     public String toString (){

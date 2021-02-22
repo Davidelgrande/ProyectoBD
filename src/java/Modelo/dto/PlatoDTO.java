@@ -6,15 +6,15 @@ import java.util.Objects;
 
 public class PlatoDTO implements Serializable {
     
-    private float id_plato ;
-    private float codigo ;
+    private int id_plato ;
+    private int codigo ;
     private String nombre ;
     private String descipcion ;
     private InputStream ruta_imagen ; 
     private float precio ;
     private String receta ; 
 
-    public PlatoDTO(float id_plato, float codigo, String nombre, String descipcion, InputStream ruta_imagen, float precio, String receta) {
+    public PlatoDTO(int id_plato, int codigo, String nombre, String descipcion, InputStream ruta_imagen, float precio, String receta) {
         this.id_plato = id_plato;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -24,7 +24,7 @@ public class PlatoDTO implements Serializable {
         this.receta = receta;
     }
 
-    public PlatoDTO(float codigo, String nombre, String descipcion, InputStream ruta_imagen, float precio, String receta) {
+    public PlatoDTO(int codigo, String nombre, String descipcion, InputStream ruta_imagen, float precio, String receta) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.descipcion = descipcion;
@@ -32,24 +32,20 @@ public class PlatoDTO implements Serializable {
         this.precio = precio;
         this.receta = receta;
     }
-    
-public PlatoDTO (){
-    
-}
 
-    public float getId_plato() {
+    public int getId_plato() {
         return id_plato;
     }
 
-    public void setId_plato(float id_plato) {
+    public void setId_plato(int id_plato) {
         this.id_plato = id_plato;
     }
 
-    public float getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(float codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -92,6 +88,8 @@ public PlatoDTO (){
     public void setReceta(String receta) {
         this.receta = receta;
     }
+
+  
     
     
     @Override
