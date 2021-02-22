@@ -27,8 +27,8 @@ public class PlatoDAO {
         try {
             PreparedStatement ps;
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setFloat(1, c.getId_plato());
-            ps.setFloat(2, c.getCodigo());
+            ps.setInt(1, c.getId_plato());
+            ps.setInt(2, c.getCodigo());
             ps.setString(3, c.getNombre());         
             ps.setBinaryStream(4, c.getRuta_imagen());
             ps.setFloat(5, c.getPrecio());
@@ -53,8 +53,8 @@ public class PlatoDAO {
             lst = new ArrayList<>();
             while (rs.next()) {
                 PlatoDTO obj = new PlatoDTO(
-                        rs.getFloat("id_plato"),
-                        rs.getFloat("codigo"),
+                        rs.getInt("id_plato"),
+                        rs.getInt("codigo"),
                         rs.getString("nombre"),
                         rs.getString("descripcion"),
                         rs.getBinaryStream("ruta_imagen"),
@@ -77,7 +77,7 @@ public class PlatoDAO {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_DELETE);
-            ps.setFloat(1, item.getId_plato());
+            ps.setInt(1, item.getId_plato());
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -94,8 +94,8 @@ public class PlatoDAO {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
-             ps.setFloat(1, item.getId_plato());
-            ps.setFloat(2, item.getCodigo());
+             ps.setInt(1, item.getId_plato());
+            ps.setInt(2, item.getCodigo());
             ps.setString(3, item.getNombre());         
             ps.setBinaryStream(4, item.getRuta_imagen());
             ps.setFloat(5, item.getPrecio());
@@ -120,8 +120,8 @@ public class PlatoDAO {
             ResultSet rs = psnt.executeQuery();
             while (rs.next()) {
                 objRes = new PlatoDTO(
-                       rs.getFloat("id_plato"),
-                        rs.getFloat("codigo"),
+                       rs.getInt("id_plato"),
+                        rs.getInt("codigo"),
                         rs.getString("nombre"),
                         rs.getString("descripcion"),
                         rs.getBinaryStream("ruta_imagen"),
