@@ -17,7 +17,7 @@ public class PlatoDAO {
      private static final String SQL_INSERT = "INSERT INTO plato"
             + "(id_plato, codigo ,nombre , descripcion , ruta_imagen, precio , receta)VALUES(?,?,?,?,?,?,?)";
     private static final String SQL_DELETE = "DELETE FROM plato WHERE id_plato= ?";
-    private static final String SQL_UPDATE = "UPDATE plato SET codigo = ?, nombre = ? ,und_pro = ?, descripcion = ? , ruta_imagen = ? , precio = ? ,receta = ? WHERE id_producto = ?";
+    private static final String SQL_UPDATE = "UPDATE plato SET codigo = ?, nombre = ? ,und_pro = ?, descripcion = ? , ruta_imagen = ? , precio = ? ,receta = ? WHERE id_plato = ?";
     private static final String SQL_READ = "SELECT *FROM plato WHERE id_plato = ?";
     private static final String SQL_READALL = "SELECT *FROM plato"; 
     
@@ -94,12 +94,12 @@ public class PlatoDAO {
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
+             ps.setFloat(1, item.getId_plato());
             ps.setFloat(2, item.getCodigo());
             ps.setString(3, item.getNombre());         
             ps.setBinaryStream(4, item.getRuta_imagen());
             ps.setFloat(5, item.getPrecio());
             ps.setString(6, item.getReceta());
-           
             if (ps.executeUpdate() > 0) {
                 return true;
             }
