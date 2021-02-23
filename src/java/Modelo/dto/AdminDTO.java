@@ -4,9 +4,9 @@ package Modelo.dto;
 
 public class AdminDTO {
     int id_administrador; 
-    int nombre_administrador; 
+    String nombre_administrador; 
 
-    public AdminDTO(int id_administrador, int nombre_administrador) {
+    public AdminDTO(int id_administrador, String nombre_administrador) {
         this.id_administrador = id_administrador;
         this.nombre_administrador = nombre_administrador;
     }
@@ -14,6 +14,9 @@ public class AdminDTO {
     @Override
     public String toString() {
         return "AdminDTO{" + "id_administrador=" + id_administrador + ", nombre_administrador=" + nombre_administrador + '}';
+    }
+
+    public AdminDTO() {
     }
 
     public int getId_administrador() {
@@ -24,11 +27,11 @@ public class AdminDTO {
         this.id_administrador = id_administrador;
     }
 
-    public int getNombre_administrador() {
+    public String getNombre_administrador() {
         return nombre_administrador;
     }
 
-    public void setNombre_administrador(int nombre_administrador) {
+    public void setNombre_administrador(String nombre_administrador) {
         this.nombre_administrador = nombre_administrador;
     }
     

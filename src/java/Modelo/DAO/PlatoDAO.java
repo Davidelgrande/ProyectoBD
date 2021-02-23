@@ -15,9 +15,9 @@ import Modelo.dto.PlatoDTO;
 public class PlatoDAO {
     
      private static final String SQL_INSERT = "INSERT INTO plato"
-            + "(id_plato, codigo ,nombre , descripcion , ruta_imagen, precio , receta)VALUES(?,?,?,?,?,?,?)";
+            + "(id_plato ,nombre , descripcion , ruta_imagen, precio )VALUES(?,?,?,?,?)";
     private static final String SQL_DELETE = "DELETE FROM plato WHERE id_plato= ?";
-    private static final String SQL_UPDATE = "UPDATE plato SET codigo = ?, nombre = ? ,und_pro = ?, descripcion = ? , ruta_imagen = ? , precio = ? ,receta = ? WHERE id_plato = ?";
+    private static final String SQL_UPDATE = "UPDATE plato SET  nombre = ? ,und_pro = ?, descripcion = ? , ruta_imagen = ? , precio = ?  WHERE id_plato = ?";
     private static final String SQL_READ = "SELECT *FROM plato WHERE id_plato = ?";
     private static final String SQL_READALL = "SELECT *FROM plato"; 
     
@@ -28,11 +28,10 @@ public class PlatoDAO {
             PreparedStatement ps;
             ps = con.getCnn().prepareStatement(SQL_INSERT);
             ps.setInt(1, c.getId_plato());
-            ps.setInt(2, c.getCodigo());
-            ps.setString(3, c.getNombre());         
-            ps.setBinaryStream(4, c.getRuta_imagen());
-            ps.setFloat(5, c.getPrecio());
-            ps.setString(6, c.getReceta());
+            ps.setString(2, c.getNombre());         
+            ps.setBinaryStream(3, c.getRuta_imagen());
+            ps.setFloat(4, c.getPrecio());
+        
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -54,12 +53,10 @@ public class PlatoDAO {
             while (rs.next()) {
                 PlatoDTO obj = new PlatoDTO(
                         rs.getInt("id_plato"),
-                        rs.getInt("codigo"),
                         rs.getString("nombre"),
                         rs.getString("descripcion"),
                         rs.getBinaryStream("ruta_imagen"),
-                        rs.getFloat("precio"),
-                        rs.getString("receta")
+                        rs.getFloat("precio")
                         
                         
                 );
@@ -95,11 +92,10 @@ public class PlatoDAO {
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
              ps.setInt(1, item.getId_plato());
-            ps.setInt(2, item.getCodigo());
-            ps.setString(3, item.getNombre());         
-            ps.setBinaryStream(4, item.getRuta_imagen());
-            ps.setFloat(5, item.getPrecio());
-            ps.setString(6, item.getReceta());
+            ps.setString(2, item.getNombre());         
+            ps.setBinaryStream(3, item.getRuta_imagen());
+            ps.setFloat(4, item.getPrecio());
+          
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -121,12 +117,10 @@ public class PlatoDAO {
             while (rs.next()) {
                 objRes = new PlatoDTO(
                        rs.getInt("id_plato"),
-                        rs.getInt("codigo"),
                         rs.getString("nombre"),
                         rs.getString("descripcion"),
                         rs.getBinaryStream("ruta_imagen"),
-                        rs.getFloat("precio"),
-                        rs.getString("receta")
+                        rs.getFloat("precio")
                         
                 );
             }

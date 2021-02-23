@@ -46,14 +46,13 @@ public class ClienteDAO {
        }
        return false;
     }
-    public boolean update(CartaDTO item){
+    public boolean update(ClienteDTO item){
      PreparedStatement ps;
      try {
            ps=con.getCnn().prepareStatement(SQL_UPDATE);
-           ps.setString(1, item.getCartegoria());
-           ps.setString(2, item.getTipo_comida());
-           ps.setDate(3, (Date) item.getVigencia());
-           ps.setInt(4, item.getId_carta());
+           ps.setString(1, item.getNombre());
+          
+           ps.setInt(4, item.getId_cliente());
            if(ps.executeUpdate()>0){
                return true;
            }
