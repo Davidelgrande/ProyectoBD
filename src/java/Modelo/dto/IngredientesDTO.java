@@ -12,6 +12,7 @@ public class IngredientesDTO implements Serializable {
     private int id_plato ;
     private String nombre ;
     private int cantidad ; 
+    private 
     private float unidad_medida ;
 
     public IngredientesDTO(int codigo_ingredientes, int id_plato, String nombre, int cantidad, float unidad_medida) {
