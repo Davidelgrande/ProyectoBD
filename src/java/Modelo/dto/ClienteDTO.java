@@ -10,9 +10,33 @@ package Modelo.dto;
  * @author user
  */
 public class ClienteDTO {
+    int id_cliente; 
     String nombre; 
 
+    public ClienteDTO(int id_cliente, String nombre) {
+        this.id_cliente = id_cliente;
+        this.nombre = nombre;
+    }
+
+    
+    
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
+    }
+
     public ClienteDTO(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
     

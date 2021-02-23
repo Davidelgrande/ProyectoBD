@@ -3,37 +3,56 @@ package Modelo.dto;
 import java.util.Date;
 
 
-
-
 public class CartaDTO {
-    int id_categoria ; 
-    String categoria; 
+    int id_carta ; 
+    String cartegoria; 
     String tipo_comida; 
     Date vigencia; 
+    int id_plato; 
+
+    public CartaDTO(int id_carta) {
+        this.id_carta = id_carta;
+    }
+    
 
     public CartaDTO() {
     }
 
-    public CartaDTO(int id_categoria, String categoria, Date vigencia) {
-        this.id_categoria = id_categoria;
-        this.categoria = categoria;
+    public CartaDTO(int id_carta, String cartegoria, String tipo_comida, Date vigencia, int id_plato) {
+        this.id_carta = id_carta;
+        this.cartegoria = cartegoria;
+        this.tipo_comida = tipo_comida;
+        this.vigencia = vigencia;
+        this.id_plato = id_plato;
+    }
+
+    public CartaDTO(int id_carta, String cartegoria, String tipo_comida, Date vigencia) {
+        this.id_carta = id_carta;
+        this.cartegoria = cartegoria;
+        this.tipo_comida = tipo_comida;
         this.vigencia = vigencia;
     }
+
     
-    public int getId_categoria() {
-        return id_categoria;
+    public int getId_carta() {
+        return id_carta;
     }
 
-    public void setId_categoria(int id_categoria) {
-        this.id_categoria = id_categoria;
+    @Override
+    public String toString() {
+        return "CartaDTO{" + "id_carta=" + id_carta + ", cartegoria=" + cartegoria + ", tipo_comida=" + tipo_comida + ", vigencia=" + vigencia + ", id_plato=" + id_plato + '}';
     }
 
-    public String getCategoria() {
-        return categoria;
+    public void setId_carta(int id_carta) {
+        this.id_carta = id_carta;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public String getCartegoria() {
+        return cartegoria;
+    }
+
+    public void setCartegoria(String cartegoria) {
+        this.cartegoria = cartegoria;
     }
 
     public String getTipo_comida() {
@@ -52,6 +71,14 @@ public class CartaDTO {
         this.vigencia = vigencia;
     }
 
- 
+    public int  getId_plato() {
+        return id_plato;
+    }
+
+    public void setId_plato(int id_plato) {
+        this.id_plato = id_plato;
+    }
+
+   
     
 }
