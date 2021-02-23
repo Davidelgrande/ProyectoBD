@@ -10,68 +10,70 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Modelo.dto.RegionDTO;
+import Modelo.dto.loginDTO;
 
-
-public class RegionDAO {
+public class loginDAO {
+    
+     private static final String SQL_INSERT = "INSERT INTO login"
+            + "(id_administrador, correo , clave )VALUES(?,?,?)";
+    private static final String SQL_DELETE = "DELETE FROM login WHERE id_administrador= ?";
+    private static final String SQL_UPDATE = "UPDATE login SET  correo = ? , clave = ?  WHERE id_administrador = ?";
+    private static final String SQL_READ = "SELECT *FROM login WHERE id_administrador = ?";
+    private static final String SQL_READALL = "SELECT *FROM login"; 
     
     
-     private static final String SQL_INSERT = "INSERT INTO region"
-            + "(codigo , nombre_region )VALUES(?,?)";
-    private static final String SQL_DELETE = "DELETE FROM region WHERE codigo= ?";
-    private static final String SQL_UPDATE = "UPDATE region SET nombre_region = ?  WHERE codigo = ?";
-    private static final String SQL_READ = "SELECT *FROM region WHERE codigo = ?";
-    private static final String SQL_READALL = "SELECT *FROM region"; 
     
     private static final Conexion con = Conexion.getInstance ();
     
-    public boolean create(RegionDTO c) {
+    public boolean create(loginDTO c) {
         try {
             PreparedStatement ps;
             ps = con.getCnn().prepareStatement(SQL_INSERT);
-            ps.setInt(1, c.getCodigo());
-            ps.setString(2, c.getNombre_region());         
+            ps.setInt(1, c.getId_administrador());
+            ps.setString(2, c.getCorreo());
+            ps.setFloat(3, c.getClave());
             
             if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(loginDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.CerrarConexion();
         }
         return false;
     }
     
-     public List<RegionDTO> readAll() {
-        List<RegionDTO> lst = null;
+     public List<loginDTO> readAll() {
+        List<loginDTO> lst = null;
         PreparedStatement psnt;
         try {
             psnt = con.getCnn().prepareStatement(SQL_READALL);
             ResultSet rs = psnt.executeQuery();
             lst = new ArrayList<>();
             while (rs.next()) {
-                RegionDTO obj = new RegionDTO(
-                      
-                        rs.getInt("codigo"),
-                        rs.getString("nombre_region")
-        
+                loginDTO obj = new loginDTO(
+   
+                        rs.getInt("id_administrador"),
+                        rs.getString("correo"),
+                        rs.getFloat("clave")
+    
                 );
                 lst.add(obj);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(loginDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.CerrarConexion();
         }
         return lst;
     }
-     public boolean delete(RegionDTO item) {
+     public boolean delete(loginDTO item) {
 
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_DELETE);
-            ps.setInt(1, item.getCodigo());
+            ps.setInt(1, item.getId_administrador());
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -83,15 +85,16 @@ public class RegionDAO {
         return false;
     }
      
-    public boolean update(RegionDTO item) {
+    public boolean update(loginDTO item) {
 
         PreparedStatement ps;
         try {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
-          
-            ps.setInt(1, item.getCodigo());
-            ps.setString(2, item.getNombre_region());         
-           
+             ps.setInt(1, item.getId_administrador());
+            ps.setString(2, item.getCorreo());
+            ps.setFloat(3, item.getClave());
+            
+        
             if (ps.executeUpdate() > 0) {
                 return true;
             }
@@ -103,29 +106,29 @@ public class RegionDAO {
         return false;
     }  
 
-   public RegionDTO read(RegionDTO filter) {
-        RegionDTO objRes = null;
+   public loginDTO read(loginDTO filter) {
+        loginDTO objRes = null;
         PreparedStatement psnt;
         try {
             psnt = con.getCnn().prepareStatement(SQL_READ);
-            psnt.setFloat(1, filter.getCodigo());
+            psnt.setFloat(1, filter.getId_administrador());
             ResultSet rs = psnt.executeQuery();
             while (rs.next()) {
-                objRes = new RegionDTO(
-                      
-                        rs.getInt("codigo"),
-                        rs.getString("nombre_region")
+                objRes = new loginDTO(
+                       rs.getInt("id_administrador"),
+                        rs.getString("correo"),
+                        rs.getFloat("clave")
+                        
                         
                 );
             }
         } catch (SQLException ex) {
-            Logger.getLogger(RegionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(loginDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             con.CerrarConexion();
         }
         return objRes;
-    }  
-    
-    
+        
+}
     
 }

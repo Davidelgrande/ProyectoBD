@@ -8,17 +8,17 @@ public class ProveedorDTO {
     
     private int id_proveedor ;
     private String nombre ; 
-    private int id_encargado ;
+   
 
-    public ProveedorDTO(int id_proveedor, String nombre, int id_encargado) {
+    public ProveedorDTO(int id_proveedor, String nombre) {
         this.id_proveedor = id_proveedor;
         this.nombre = nombre;
-        this.id_encargado = id_encargado;
+       
     }
 
-    public ProveedorDTO(String nombre, int id_encargado) {
+    public ProveedorDTO(String nombre) {
         this.nombre = nombre;
-        this.id_encargado = id_encargado;
+      
     }
 
     public int getId_proveedor() {
@@ -37,21 +37,14 @@ public class ProveedorDTO {
         this.nombre = nombre;
     }
 
-    public int getId_encargado() {
-        return id_encargado;
-    }
-
-    public void setId_encargado(int id_encargado) {
-        this.id_encargado = id_encargado;
-    }
-
-   
+  
     
     @Override
     public String toString (){
-        return " id proveedor :" + id_proveedor + "\nnombre : " + nombre + "\nid encargo : "+id_encargado ;
+        return " id proveedor :" + id_proveedor + "\nnombre : " + nombre  ;
     }
     
+    @Override
     public boolean equals(Object obj ){
          if (this == obj) {
             return true;
@@ -69,9 +62,7 @@ public class ProveedorDTO {
          if (!Objects.equals(this.nombre, other.nombre)) {
             return false;
         }
-        if (this.id_encargado != other.id_encargado) {
-            return false;
-        } 
+       
         
         return true ;
         
