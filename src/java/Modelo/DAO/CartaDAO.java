@@ -50,7 +50,7 @@ public class CartaDAO {
        } catch (SQLException ex) {
            Logger.getLogger(CartaDAO.class.getName()).log(Level.SEVERE, null, ex);
        } finally {
-           con.cerraConexion();
+           con.CerrarConexion();
        }
        return false;
     }
@@ -68,7 +68,7 @@ public class CartaDAO {
        } catch (SQLException ex) {
            System.out.println("ERROR AL ACTUALIZAR"+ ex.getMessage());
        }finally{
-         con.cerraConexion();
+         con.CerrarConexion();
      }
      return false;
      
@@ -95,7 +95,7 @@ public class CartaDAO {
        } catch (SQLException ex) {
            Logger.getLogger(CartaDAO.class.getName()).log(Level.SEVERE, null, ex);
        } finally{
-           con.cerraConexion();
+           con.CerrarConexion();
        }
            
      return lst;
@@ -124,7 +124,7 @@ public class CartaDAO {
        } catch (SQLException ex) {
            Logger.getLogger(CartaDAO.class.getName()).log(Level.SEVERE, null, ex);
        }finally{
-           con.cerraConexion();
+           con.CerrarConexion();
        }
        return objRes;
 }
