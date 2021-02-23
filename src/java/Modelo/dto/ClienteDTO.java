@@ -18,6 +18,15 @@ public class ClienteDTO {
         this.nombre = nombre;
     }
 
+    @Override
+    public String toString() {
+        return "ClienteDTO{" + "id_cliente=" + id_cliente + ", nombre=" + nombre + '}';
+    }
+
+    public ClienteDTO() {
+        
+    }
+
     
     
     public int getId_cliente() {

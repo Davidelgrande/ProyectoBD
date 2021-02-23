@@ -6,7 +6,9 @@
 package Modelo;
 
 import Modelo.DAO.CartaDAO;
+import Modelo.DAO.ClienteDAO;
 import Modelo.dto.CartaDTO;
+import Modelo.dto.ClienteDTO;
 
 /**
  *
@@ -15,11 +17,11 @@ import Modelo.dto.CartaDTO;
 public class pruebas {
     public static void main(String[] args) {
         
-        CartaDAO ob = new CartaDAO(); 
-        CartaDTO dto = new CartaDTO(); 
+        ClienteDAO ob = new ClienteDAO(); 
+        ClienteDTO dto = new ClienteDTO(); 
         
         
-        dto.setId_carta(1);
-        System.out.println(ob.readCorreo(dto).toString());
+        dto.setId_cliente(45060);
+        System.out.println(ob.readCliente(dto).toString());
     }
 }
