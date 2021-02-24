@@ -1,6 +1,7 @@
 
 package Controlador;
 
+import Modelo.DAO.AdminDAO;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -82,17 +83,12 @@ public class Facade {
         return rta;
     }
 
-    public List<ClienteDTO> listarCliente() {
-        List<ClienteDTO> lst = null;
-        ClienteDAO dao= new ClienteDAO();
-        lst = dao.readAll();
-        return lst;
-    }
+  
 
     public ClienteDTO verCliente(ClienteDTO item) {
         ClienteDTO dto;
         ClienteDAO dao = new ClienteDAO();
-        dto = dao.read(item);
+        dto = dao.readCliente(item);
         return dto;
 
     }
@@ -107,12 +103,7 @@ public class Facade {
 
     }
 
-    public boolean eliminarCliente(ClienteDTO elim) {
 
-        ClienteDAO dao = new ClienteDAO();
-        return dao.delete(elim);
-
-    }
     
     
      public boolean crearEncargado(EncargadoDTO objP) {
@@ -124,22 +115,17 @@ public class Facade {
         return rta;
     }
 
-    public List<EncargadoDTO> listarEncargado() {
-        List<EncargadoDTO> lst = null;
-        EncargadoDAO dao = new EncargadoDAO();
-        lst = dao.readAll();
-        return lst;
-    }
 
-    public EncargadoDTO verEncargado(EncargadoDTO item) {
+
+    public EncargadoDTO verProducto(EncargadoDTO item) {
         EncargadoDTO dto;
         EncargadoDAO dao = new EncargadoDAO();
-        dto = dao.read(item);
+        dto = dao.readCliente(item);
         return dto;
 
     }
 
-    public boolean actualizarEncargado(EncargadoDTO actual) {
+    public boolean actualizarProducto(EncargadoDTO actual) {
         boolean rta = false;
         if (actual != null) {
             EncargadoDAO dao = new EncargadoDAO();
@@ -149,11 +135,107 @@ public class Facade {
 
     }
 
+  
+     public boolean crearAdministrador(AdminDTO objP) {
+        boolean rta = false;
+        if (objP != null) {
+            AdminDAO dao = new AdminDAO();
+            rta = dao.create(objP);
+        }
+        return rta;
+    }
+
+
+
+    public AdminDTO verProducto(AdminDTO item) {
+        AdminDTO dto;
+        AdminDAO dao = new AdminDAO();
+        dto = dao.readCliente(item);
+        return dto;
+
+    }
+
+    public boolean actualizarProducto(AdminDTO actual) {
+        boolean rta = false;
+        if (actual != null) {
+            AdminDAO dao = new AdminDAO();
+            rta = dao.update(actual);
+        }
+        return rta;
+
+    }
+
+
+     public boolean crearLogin(loginDTO objP) {
+        boolean rta = false;
+        if (objP != null) {
+            loginDAO dao = new loginDAO();
+            rta = dao.create(objP);
+        }
+        return rta;
+    }
+
+
+    public EncargadoDTO verEncargado(EncargadoDTO item) {
+        EncargadoDTO dto;
+        EncargadoDAO dao = new EncargadoDAO();
+
+    
+
+    public loginDTO verLogin(loginDTO item) {
+        loginDTO dto;
+        loginDAO dao = new loginDAO();
+        dto = dao.read(item);
+        return dto;
+
+    }
+
+
+    public boolean actualizarEncargado(EncargadoDTO actual) {
+        boolean rta = false;
+        if (actual != null) {
+            EncargadoDAO dao = new EncargadoDAO();
+
+    public boolean actualizarLogin(loginDTO actual) {
+        boolean rta = false;
+        if (actual != null) {
+            loginDAO dao = new loginDAO();
+
+            rta = dao.update(actual);
+        }
+        return rta;
+
+    }
+
+
     public boolean eliminarEncargado(EncargadoDTO elim) {
 
         EncargadoDAO dao = new EncargadoDAO();
+
+    public boolean eliminarEncargado (loginDTO elim) {
+
+        loginDAO dao = new  loginDAO();
+
         return dao.delete(elim);
 
     }
     
+       public loginDTO validarLogin(loginDTO objVal){
+        loginDTO usu;
+        loginDAO dao= new loginDAO();
+        usu=dao.validarLogin(objVal);
+        return usu;
+    }
+     public String asegurarClave(String clave){
+        try {
+            MessageDigest sha256 =MessageDigest.getInstance("SHA-256");
+            sha256.update(clave.getBytes("UTF-8"));
+             clave=String.format("%064x", new BigInteger(1,sha256.digest()));
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(MiLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(MiLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return clave;
+     } 
 }

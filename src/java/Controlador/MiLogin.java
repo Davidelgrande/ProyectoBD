@@ -9,6 +9,14 @@ import Modelo.dao.loginDAO;
 import Modelo.dto.AdminDTO;
 import Modelo.dto.loginDTO;
 import java.io.IOException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,27 +43,27 @@ public class MiLogin extends HttpServlet {
         //Indica la accion a ejecutar
         String accion = request.getParameter("accion");
 
-        Facade2 obj_f = new Facade2();
-        loginDTO oblogin = new loginDTO(); 
+        Facade obj_f = new Facade();
+       
         
         switch (accion) {
             case "valida_sesion":
                 String correo = request.getParameter("txt_correo");
                 String clave = request.getParameter("txt_clave");
                 System.out.println("clave= "+clave);
-                AdminDTO usu = new AdminDTO();
+                 loginDTO oblogin = new loginDTO(); 
                 oblogin.setCorreo(correo);
                 oblogin.setClave(clave);
-                usu = obj_f.validarLogin(usu);
+                oblogin= obj_f.validarLogin(oblogin);
                  
-                if (usu != null) {
+                if (oblogin != null) {
                     System.out.println("Usuario existe");
                     HttpSession login = request.getSession();
                        
                     
-                    login.setAttribute("usu_login", usu);
+                    login.setAttribute("usu_login", oblogin);
                     System.out.println("sesion id= " + login.getId());
-                    request.getRequestDispatcher("AdminP.jsp").forward(request, response);
+                    request.getRequestDispatcher("carrito.jsp").forward(request, response);
                     break;
                    
                     
@@ -69,7 +77,7 @@ public class MiLogin extends HttpServlet {
             case "salir":
                 HttpSession login=request.getSession();
                 login.invalidate();
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("compras.jsp").forward(request, response);
                 break;
         }
 
