@@ -9,17 +9,21 @@ public class loginDTO {
     
     private int id_administrador ;
     private String correo ;
-    private float clave ;
+    private String clave ;
 
-    public loginDTO(int id_administrador, String correo, float clave) {
+    public loginDTO(int id_administrador, String correo, String clave) {
         this.id_administrador = id_administrador;
         this.correo = correo;
         this.clave = clave;
     }
 
-    public loginDTO(String correo, float clave) {
+    public loginDTO(String correo, String clave) {
         this.correo = correo;
         this.clave = clave;
+    }
+
+    public loginDTO() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
    
@@ -40,11 +44,11 @@ public class loginDTO {
         this.correo = correo;
     }
 
-    public float getClave() {
+    public String getClave() {
         return clave;
     }
 
-    public void setClave(float clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
     

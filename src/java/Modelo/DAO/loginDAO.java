@@ -31,7 +31,7 @@ public class loginDAO {
             ps = con.getCnn().prepareStatement(SQL_INSERT);
             ps.setInt(1, c.getId_administrador());
             ps.setString(2, c.getCorreo());
-            ps.setFloat(3, c.getClave());
+            ps.setString (3, c.getClave());
             
             if (ps.executeUpdate() > 0) {
                 return true;
@@ -56,7 +56,7 @@ public class loginDAO {
    
                         rs.getInt("id_administrador"),
                         rs.getString("correo"),
-                        rs.getFloat("clave")
+                        rs.getString("clave")
     
                 );
                 lst.add(obj);
@@ -92,7 +92,7 @@ public class loginDAO {
             ps = con.getCnn().prepareStatement(SQL_UPDATE);
              ps.setInt(1, item.getId_administrador());
             ps.setString(2, item.getCorreo());
-            ps.setFloat(3, item.getClave());
+            ps.setString(3, item.getClave());
             
         
             if (ps.executeUpdate() > 0) {
@@ -111,13 +111,13 @@ public class loginDAO {
         PreparedStatement psnt;
         try {
             psnt = con.getCnn().prepareStatement(SQL_READ);
-            psnt.setFloat(1, filter.getId_administrador());
+            psnt.setInt(1, filter.getId_administrador());
             ResultSet rs = psnt.executeQuery();
             while (rs.next()) {
                 objRes = new loginDTO(
                        rs.getInt("id_administrador"),
                         rs.getString("correo"),
-                        rs.getFloat("clave")
+                        rs.getString("clave")
                         
                         
                 );
