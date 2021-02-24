@@ -18,7 +18,7 @@
                     <div class="col-12">
                         <img src="imagenes/login.png" height="128" width="128"/>
                     </div>
-                    <form action="MyLogin?accion=valida_sesion" method="POST">
+                    <form action="MiLogin?accion=valida_sesion" method="POST">
                         <div class="form-group text-center">
                             <p>
                                 <strong>Bienvenidos al Login</strong>

@@ -3,7 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/ProyectoFinalAvanzada/src/java/Modelo/dto/loginDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/dto/AdminDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/DAO/loginDAO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/web/detalle.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/dto/ProveedorDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/DAO/IngredientesDAO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/conexiones/Conexion.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/DAO/ProveedorDAO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/dto/EncargadoDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/DAO/EncargadoDAO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/dto/ClienteDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Controlador/Validar.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/pruebas.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/dto/FacturaDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/dto/IngredientesDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/dto/PlatoDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/DAO/ClienteDAO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/DAO/FacturaDAO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Controlador/MiLogin.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/dto/CartaDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/dto/RegionDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/web/index.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/web/carrito.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/dto/loginDTO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/web/compras.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/DAO/PlatoDAO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/DAO/RegionDAO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/DAO/AdminDAO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Modelo/DAO/CartaDAO.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/ProyectoBD/src/java/Controlador/Facade.java</file>
         </group>
     </open-files>
 </project-private>

@@ -131,4 +131,29 @@ public class loginDAO {
         
 }
     
+   public loginDTO validarLogin(loginDTO filter) {
+        loginDTO objRes = null;
+        PreparedStatement psnt;
+        try {
+            psnt = con.getCnn().prepareStatement(SQL_READ);
+            psnt.setString(1, filter.getCorreo());
+            psnt.setString(2, filter.getClave());
+            ResultSet rs = psnt.executeQuery();
+            while (rs.next()) {
+                objRes = new loginDTO(
+                       rs.getInt("id_administrador"),
+                        rs.getString("correo"),
+                        rs.getString("clave")
+                        
+                        
+                );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(loginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            con.CerrarConexion();
+        }
+        return objRes;
+        
+}
 }
