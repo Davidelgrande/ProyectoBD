@@ -131,27 +131,27 @@ public class Facade {
         return lst;
     }
 
-    public EncargadoDTO verProducto(ProductoDTO item) {
-        ProductoDTO dto;
-        ProductoDAO dao = new ProductoDAO();
+    public EncargadoDTO verEncargado(EncargadoDTO item) {
+        EncargadoDTO dto;
+        EncargadoDAO dao = new EncargadoDAO();
         dto = dao.read(item);
         return dto;
 
     }
 
-    public boolean actualizarProducto(ProductoDTO actual) {
+    public boolean actualizarEncargado(EncargadoDTO actual) {
         boolean rta = false;
         if (actual != null) {
-            ProductoDAO dao = new ProductoDAO();
+            EncargadoDAO dao = new EncargadoDAO();
             rta = dao.update(actual);
         }
         return rta;
 
     }
 
-    public boolean eliminarProducto(ProductoDTO elim) {
+    public boolean eliminarEncargado(EncargadoDTO elim) {
 
-        ProductoDAO dao = new ProductoDAO();
+        EncargadoDAO dao = new EncargadoDAO();
         return dao.delete(elim);
 
     }

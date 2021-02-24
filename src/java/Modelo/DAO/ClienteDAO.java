@@ -18,7 +18,9 @@ public class ClienteDAO {
    private static final String SQL_READ="SELECT * FROM cliente WHERE id_cliente= ? ";
    private static final String SQL_INSERT = "INSERT INTO cliente"
            +"(id_cliente, nombre) VALUES(?, ?)";
+   private static final String SQL_DELETE = "DELETE FROM cliente WHERE id_cliente= ?";
    private static final String SQL_UPDATE="UPDATE cliente SET nombre = ?,  WHERE id_cliente = ? ";
+   private static final String SQL_READALL = "SELECT *FROM cliente "; 
   
   // private static final String SQL_INNER = "SELECT * from carta a inner join plato b on a.id_carta = b.id_plato"; 
    
@@ -40,7 +42,7 @@ public class ClienteDAO {
                 
             }
        } catch (SQLException ex) {
-           Logger.getLogger(CartaDAO.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
        } finally {
            con.CerrarConexion();
        }
@@ -64,9 +66,25 @@ public class ClienteDAO {
      return false;
      
  }
+    public boolean delete(ClienteDTO item) {
+
+        PreparedStatement ps;
+        try {
+            ps = con.getCnn().prepareStatement(SQL_DELETE);
+            ps.setInt(1, item.getId_cliente());
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            throw new Error(ex.getMessage());
+        } finally {
+            con.CerrarConexion();
+        }
+        return false;
+    }
    
 
-      public ClienteDTO readCliente(ClienteDTO filter){
+      public ClienteDTO read(ClienteDTO filter){
       
       ClienteDTO objRes=null;
      PreparedStatement psnt;
@@ -84,11 +102,37 @@ public class ClienteDAO {
  
           }
        } catch (SQLException ex) {
-           Logger.getLogger(CartaDAO.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
        }finally{
            con.CerrarConexion();
        }
        return objRes;
 }
+      
+      
+     public List<ClienteDTO> readAll() {
+        List<ClienteDTO> lst = null;
+        PreparedStatement psnt;
+        try {
+            psnt = con.getCnn().prepareStatement(SQL_READALL);
+            ResultSet rs = psnt.executeQuery();
+            lst = new ArrayList<>();
+            while (rs.next()) {
+                ClienteDTO obj = new ClienteDTO(
+                       rs.getInt("id_cliente"),
+                       rs.getString("nombre")
+                
+                        
+                        
+                );
+                lst.add(obj);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            con.CerrarConexion();
+        }
+        return lst;
+    }
 }
 

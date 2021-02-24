@@ -45,7 +45,7 @@ public class FacturaDAO {
                 
             }
        } catch (SQLException ex) {
-           Logger.getLogger(CartaDAO.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(FacturaDAO.class.getName()).log(Level.SEVERE, null, ex);
        } finally {
            con.CerrarConexion();
        }
@@ -91,7 +91,7 @@ public class FacturaDAO {
    
           }
        } catch (SQLException ex) {
-           Logger.getLogger(CartaDAO.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(FacturaDAO.class.getName()).log(Level.SEVERE, null, ex);
        }finally{
            con.CerrarConexion();
        }

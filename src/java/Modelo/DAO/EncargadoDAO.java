@@ -1,14 +1,15 @@
 
 package Modelo.DAO;
 
-import Modelo.dto.CartaDTO;
-import Modelo.dto.ClienteDTO;
+
 import Modelo.dto.EncargadoDTO;
 import conexiones.Conexion;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,8 +19,8 @@ public class EncargadoDAO {
    private static final String SQL_INSERT = "INSERT INTO encargado"
            +"(id_cliente, nombre) VALUES(?, ?)";
    private static final String SQL_UPDATE="UPDATE encargado SET nombre= ?,  WHERE id_cliente = ? ";
-  
-  // private static final String SQL_INNER = "SELECT * from carta a inner join plato b on a.id_carta = b.id_plato"; 
+  private static final String SQL_READALL = "SELECT *FROM encargado"; 
+   private static final String SQL_DELETE = "DELETE FROM encargado WHERE id_encargado= ?";
    
    
    
@@ -39,7 +40,7 @@ public class EncargadoDAO {
                 
             }
        } catch (SQLException ex) {
-           Logger.getLogger(CartaDAO.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(EncargadoDAO.class.getName()).log(Level.SEVERE, null, ex);
        } finally {
            con.CerrarConexion();
        }
@@ -65,7 +66,7 @@ public class EncargadoDAO {
  }
    
 
-      public EncargadoDTO readCliente(EncargadoDTO filter){
+      public EncargadoDTO read(EncargadoDTO filter){
       
       EncargadoDTO objRes=null;
      PreparedStatement psnt;
@@ -83,13 +84,50 @@ public class EncargadoDAO {
  
           }
        } catch (SQLException ex) {
-           Logger.getLogger(CartaDAO.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(EncargadoDAO.class.getName()).log(Level.SEVERE, null, ex);
        }finally{
            con.CerrarConexion();
        }
        return objRes;
 }
 
+        public boolean delete(EncargadoDTO item) {
 
+        PreparedStatement ps;
+        try {
+            ps = con.getCnn().prepareStatement(SQL_DELETE);
+            ps.setInt(1, item.getId_encargado());
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            throw new Error(ex.getMessage());
+        } finally {
+            con.CerrarConexion();
+        }
+        return false;
+    }
+public List<EncargadoDTO> readAll() {
+        List<EncargadoDTO> lst = null;
+        PreparedStatement psnt;
+        try {
+            psnt = con.getCnn().prepareStatement(SQL_READALL);
+            ResultSet rs = psnt.executeQuery();
+            lst = new ArrayList<>();
+            while (rs.next()) {
+                EncargadoDTO obj = new EncargadoDTO(
+                        rs.getInt("id_encargado"),
+                        rs.getString("nombre")
+                        
+                );
+                lst.add(obj);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EncargadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            con.CerrarConexion();
+        }
+        return lst;
+    }
 
 }

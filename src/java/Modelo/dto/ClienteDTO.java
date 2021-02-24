@@ -5,11 +5,13 @@
  */
 package Modelo.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author user
  */
-public class ClienteDTO {
+public class ClienteDTO implements Serializable{
     int id_cliente; 
     String nombre; 
 
